@@ -1,0 +1,99 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="semana5GPaucar.Views.vPersona"  BackgroundColor="White">
+    <VerticalStackLayout>
+
+        <StackLayout BackgroundColor="LightBlue" Padding="20">
+            <Image Source="https://www.uisrael.edu.ec/wp-content/uploads/2023/01/logo-uisrael@2x-e1674848533171.png"
+             HeightRequest="40"/>
+            <Label 
+             Text="Gestion del Personal"
+             FontSize="20"
+             HorizontalTextAlignment="Center"/>
+        </StackLayout>
+
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="65"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="btnAgregar"  Grid.Row="1" Grid.Column="1" Clicked="btnAgregar_Clicked" BackgroundColor="White" HeightRequest="60">
+                <Button.ImageSource>
+                    <FileImageSource File="agregarpersona.png" />
+
+                </Button.ImageSource>
+            </Button>
+
+            <Button x:Name="btnObtener"  Grid.Row="1" Grid.Column="3" Clicked="btnObtener_Clicked" BackgroundColor="White" HeightRequest="90">
+                <Button.ImageSource>
+                    <FileImageSource File="listarpersonas.png" />
+
+                </Button.ImageSource>
+            </Button>
+            <Image Source="personas.png" HeightRequest="50" Grid.Row="1" Grid.Column="2" />
+        </Grid>
+        <StackLayout BackgroundColor="LightBlue" Padding="20">
+            <Label Text="Id     Nombres       Apellidos" FontSize="Micro" TextColor="Black" />
+        </StackLayout>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+            <CollectionView x:Name="Listapersonas"
+                            Grid.Row="3"
+                            Grid.ColumnSpan="4">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Id}" Grid.Row="0" Grid.Column="0" TextColor="Black"/>
+                            <Label Text="{Binding Name}" Grid.Row="0" Grid.Column="1" TextColor="Black"/>
+                            <Label Text="{Binding Apellido}" Grid.Row="0" Grid.Column="2" TextColor="Black"/>
+                            <Button x:Name="btnUpdate" Grid.Row="0" Grid.Column="3" Clicked="btnUpdate_Clicked" HeightRequest="10"  BackgroundColor="WhiteSmoke">
+                                <Button.ImageSource>
+                                    <FileImageSource File="editar.png" />
+                                </Button.ImageSource>
+                            </Button>
+
+                            <Button x:Name="btnBorrar" Grid.Row="0" Grid.Column="4" Clicked="btnBorrar_Clicked" HeightRequest="30" BackgroundColor="WhiteSmoke">
+                                <Button.ImageSource>
+                                    <FileImageSource File="borrar.png" />
+                                </Button.ImageSource>
+                            </Button>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>
